@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Modal, TextInput} from 'react-native';
+import { View, Modal, TextInput } from 'react-native';
 import { Button, Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { closeLoginModal } from '../actions';
@@ -24,6 +24,7 @@ class LoginModal extends Component {
                     <View style={containerStyle}>
                         <View style={buttonContainerStyle}>
                             <Button
+                                raised
                                 title="Close"
                                 backgroundColor="#2196F3"
                                 onPress={() => this.props.closeLoginModal()}
@@ -44,6 +45,12 @@ class LoginModal extends Component {
                             placeholder="Digite sua senha"
                         >
                         </TextInput>
+                        <Button
+                            raised
+                            title="Entrar"
+                            backgroundColor="#2196F3"
+                            onPress={() => {}}
+                        />
                     </View>
                 </View>
             </Modal>
