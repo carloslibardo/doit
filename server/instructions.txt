@@ -1,0 +1,26 @@
+Instructions to run the server locally:
+
+1 - run "pip3 install -r requirements.txt" to install requirements to execution
+2 - run: "python3 server.py" to run the server locally
+3 - acess server from "yourip:5000/app/login"
+
+Requirements:
+
+The server will receive a json file with username and password fields
+The server will return a json file with the logged information(if the log was approved) and the cause(why the log was or wasn't approved)
+
+Testing:
+
+Testing via command line:
+1 - "curl -i -H "Content-Type: application/json" -X POST -d '{"username":"admin", "password":"admin"}' http://yourIp/app/login"
+2 - the response from the server:
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 59
+Set-Cookie: remember_token=5b940bf8f5afce4c7f10dc9f|a64cfcbb7fb1029ea4ae873dd9f8013485ccdb493c4a755d5518776ef40ec313d2bc3c5c003a04c0ce5445ee2$
+Set-Cookie: session=f6093676-013c-4a94-835c-f83fdd81dbfd; Expires=Wed, 10-Oct-2018 00:55:54 GMT; HttpOnly; Path=/
+Server: Werkzeug/0.14.1 Python/3.6.5
+Date: Sun, 09 Sep 2018 00:55:54 GMT
+
+{"resp":[{"cause":"user data are correct","logged":true}]}
+3 - to check session cookie use: "curl -i --cookie "session=session_number" -H "Content-Type: application/json" -X GET http://yourIp:5000/"
