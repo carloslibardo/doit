@@ -1,0 +1,1 @@
+export const OPEN_CHORDS_MODAL = 'open_chords_modal';
