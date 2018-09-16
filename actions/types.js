@@ -1,1 +1,2 @@
-export const OPEN_CHORDS_MODAL = 'open_chords_modal';
+export const OPEN_LOGIN_MODAL = 'open_login_modal';
+export const CLOSE_LOGIN_MODAL = 'close_chords_modal';

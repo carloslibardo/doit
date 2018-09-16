@@ -1,10 +1,14 @@
-import { FacebookAds } from 'expo';
-
 import {
-  OPEN_CHORDS_MODAL,
+  OPEN_LOGIN_MODAL,
+  CLOSE_LOGIN_MODAL
 } from './types';
 
-export const openChordsModal = () => ({
-  type: OPEN_CHORDS_MODAL,
+export const openLoginModal = () => ({
+  type: OPEN_LOGIN_MODAL,
   payload: true
 });
+
+export const closeLoginModal = () => ({
+  type: CLOSE_LOGIN_MODAL,
+  payload: false
+})

@@ -6,47 +6,38 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { openLoginModal } from '../actions';
 
- class LoginFooter extends Component {
+class LoginFooter extends Component {
     render() {
         return (
             <View style={styles.loginContainer}>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity
-                            activeOpacity={0.8}
-                            style={[styles.button, styles.registerButton]}
-                            onPress={() => { }}
-                        >
-                            <Text style={styles.buttonText}>Registrar</Text>
-                        </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={[styles.button, styles.registerButton]}
+                        onPress={() => { }}
+                    >
+                        <Text style={styles.buttonText}>Sou novo por aqui</Text>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity
-                            activeOpacity={0.8}
-                            style={[styles.button, styles.loginButton]}
-                            onPress={() => {this.props.enableModal()}}
-                        >
-                            <Text style={styles.buttonText}>Entrar</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={[styles.button, styles.loginButton]}
+                        onPress={() => { this.props.openLoginModal() }}
+                    >
+                        <Text style={styles.buttonText}>Já tenho uma conta</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }
 }
 
-function mapStateToProps(state){
-    return {
-        modalVisible: state.modalVisible
-    }
-}
+export default connect(null, {openLoginModal})(LoginFooter)
 
-function mapDispatchToProps(dispatch){
-    enableModal : () => dispatch({type: 'ENABLE_MODAL'});
-}
-
-export default connect(mapStateToProps)(LoginFooter)
-
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
     loginContainer: {
         backgroundColor: '#FFFFFF',
         width: 360,
@@ -77,7 +68,10 @@ const styles = StyleSheet.create({
     buttonText: {
         fontWeight: 'bold',
         color: "#FFF",
-        fontSize: 25,
+        fontSize: 23,
+        textAlign: 'center',
+        marginLeft: 2,
+        marginRight:2
     }
 
 })

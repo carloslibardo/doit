@@ -3,6 +3,7 @@ import { View, Platform, Image } from 'react-native';
 import Expo from 'expo';
 import icon from '../assets/icons/pure-icon.png'
 import { STATUS_BAR_HEIGHT } from '../constants';
+import LoginModal from '../modals/loginModal';
 import Slider from '../components/slider';
 import LoginFooter from '../components/loginFooter';
 
@@ -49,6 +50,7 @@ class MainScreen extends Component {
         return (
 
                 <View style={{ flex: 1, backgroundColor: '#ddd' }}>
+                    <LoginModal></LoginModal>
                     <Slider></Slider>
                     <LoginFooter></LoginFooter>
                 </View>
