@@ -3,6 +3,8 @@ import { View, Platform, Image } from 'react-native';
 import Expo from 'expo';
 import icon from '../assets/icons/pure-icon.png'
 import { STATUS_BAR_HEIGHT } from '../constants';
+import Slider from '../components/slider';
+import LoginFooter from '../components/loginFooter';
 
 const cacheImages = images => images.map(image => {
     if (typeof image === 'string') {
@@ -45,13 +47,13 @@ class MainScreen extends Component {
     }
     render() {
         return (
-            <View>
-                <View style={{ flex: 1, backgroundColor: '#ddd' }}>
-                    {/* Modal */}
 
-                    {/* Content */}
+                <View style={{ flex: 1, backgroundColor: '#ddd' }}>
+                    <Slider></Slider>
+                    <LoginFooter></LoginFooter>
                 </View>
-            </View>
+                
+                
         )
     }
 }
