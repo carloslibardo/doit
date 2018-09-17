@@ -41,6 +41,7 @@ class LoginModal extends Component {
                         </TextInput>
                         <TextInput
                             autoCapitalize="none"
+                            secureTextEntry={true}
                             style={styles.boxInput}
                             placeholder="Digite sua senha"
                         >
