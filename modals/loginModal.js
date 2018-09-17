@@ -6,6 +6,32 @@ import { closeLoginModal } from '../actions';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../constants';
 
 class LoginModal extends Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        username: '',
+        password: ''
+      }
+    }
+
+    requestLogin() {
+      let input_username = this.state.username;
+      let input_password = this.state.password;
+      let input_unique_id = 'admin';
+      fetch('http://192.168.15.7:5000/app/login', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: input_username,
+          password: input_password,
+          unique_id: input_unique_id,
+        }),
+      }).then((response) => response.json());
+    }
+
     render() {
         const {
             modalStyle,
@@ -33,6 +59,9 @@ class LoginModal extends Component {
 
                         <Text style={styles.boxTitle}>Faça seu login</Text>
                         <TextInput
+                            ref={(el) => {this.username = el; }}
+                            onChangeText={(username) => this.setState(state => ({username}))}
+                            value={this.state.username}
                             autoFocus
                             autoCapitalize="none"
                             style={styles.boxInput}
@@ -40,6 +69,9 @@ class LoginModal extends Component {
                         >
                         </TextInput>
                         <TextInput
+                            ref={(el) => {this.password = el; }}
+                            onChangeText={(password) => this.setState(state => ({password}))}
+                            value={this.state.password}
                             autoCapitalize="none"
                             style={styles.boxInput}
                             placeholder="Digite sua senha"
@@ -49,7 +81,7 @@ class LoginModal extends Component {
                             raised
                             title="Entrar"
                             backgroundColor="#2196F3"
-                            onPress={() => {}}
+                            onPress={() => this.requestLogin()}
                         />
                     </View>
                 </View>
