@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { openLoginModal } from '../actions';
+import { openLoginModal, openRegisterScreen } from '../actions';
 
 class LoginFooter extends Component {
     render() {
@@ -17,7 +17,7 @@ class LoginFooter extends Component {
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={[styles.button, styles.registerButton]}
-                        onPress={() => { }}
+                        onPress={() => { this.props.openRegisterScreen() }}
                     >
                         <Text style={styles.buttonText}>Sou novo por aqui</Text>
                     </TouchableOpacity>
@@ -35,7 +35,7 @@ class LoginFooter extends Component {
     }
 }
 
-export default connect(null, {openLoginModal})(LoginFooter)
+export default connect(null, {openLoginModal, openRegisterScreen})(LoginFooter)
 
 const styles = StyleSheet.create({
     loginContainer: {

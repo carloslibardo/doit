@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
     Text,
     View,
@@ -6,11 +6,12 @@ import {
 } from 'react-native'
 
 import Swiper from 'react-native-swiper'
-import {WINDOW_WIDTH} from '../constants';
+import { WINDOW_WIDTH } from '../constants';
 
-const Slider = props => ( <View style={styles.container}>
-        <Image style={styles.image} source={props.uri}/>
-    </View>
+const Slider = props => (<View style={styles.container}>
+    <Image style={styles.image} source={props.uri} />
+    <Text style={styles.text}>{props.content}</Text>
+</View>
 )
 
 const styles = {
@@ -21,13 +22,18 @@ const styles = {
     image: {
         flex: 1,
         width: WINDOW_WIDTH
+    },
+    text:{
+        backgroundColor: '#FFFFFF',
+        textAlign: 'center',
+        fontSize: 20
     }
 }
 
 export default class extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        
+
         this.state = {
             imagesSlider: [
                 require('../assets/sliderImages/image1.jpg'),
@@ -36,19 +42,22 @@ export default class extends Component {
             ]
         }
     }
-    render(){
+    render() {
         return (
-            <View style={{flex:1}}>
+            <View style={{ flex: 1 }}>
                 <Swiper
                     height={240}
                 >
-                {
-                    this.state.imagesSlider.map((image, index) => <Slider 
-                        uri={image}
-                        key={index}
-                    />)
-                }
-
+                    {
+                        this.state.imagesSlider.map((image, index) => 
+                            <Slider
+                                uri={image}
+                                key={index}
+                                content={index}
+                            >
+                            </Slider>
+                        )
+                    }
                 </Swiper>
             </View>
         )

@@ -37,6 +37,8 @@ class LoginModal extends Component {
                             autoCapitalize="none"
                             style={styles.boxInput}
                             placeholder="Digite seu usuário"
+                            returnKeyType='next'
+                            onSubmitEditing={() => this.passwordInput.focus()}
                         >
                         </TextInput>
                         <TextInput
@@ -44,6 +46,7 @@ class LoginModal extends Component {
                             secureTextEntry={true}
                             style={styles.boxInput}
                             placeholder="Digite sua senha"
+                            ref={(input) => this.passwordInput = input}
                         >
                         </TextInput>
                         <Button
